@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>munaaf - Learning Community</title>
 <style>
   * {
@@ -11,122 +11,138 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Arial, sans-serif;
   }
-
+  html {
+    /* base font scales gently with viewport width, clamped between limits */
+    font-size: clamp(14px, 3.5vw, 18px);
+  }
   body {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: clamp(12px, 5vw, 20px);
     color: #fff;
   }
-
   .card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    max-width: 420px;
     width: 100%;
-    padding: 30px 25px;
+    max-width: 420px;
+    padding: clamp(20px, 6vw, 30px) clamp(16px, 5vw, 25px);
     text-align: center;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   }
-
   .card img.avatar {
-    width: 110px;
-    height: 110px;
+    width: clamp(80px, 25vw, 110px);
+    height: clamp(80px, 25vw, 110px);
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #4fc3f7;
     margin-bottom: 15px;
   }
-
   h1 {
-    font-size: 26px;
+    font-size: clamp(20px, 6vw, 26px);
     margin-bottom: 20px;
     color: #4fc3f7;
     letter-spacing: 1px;
   }
-
   .features {
     text-align: left;
     margin: 0 auto 20px auto;
     max-width: 320px;
   }
-
   .features p {
-    font-size: 15.5px;
+    font-size: clamp(13px, 3.8vw, 15.5px);
     margin: 10px 0;
     line-height: 1.4;
   }
-
   .tagline {
-    font-size: 14.5px;
+    font-size: clamp(12.5px, 3.5vw, 14.5px);
     color: #cfd8dc;
     margin-bottom: 22px;
   }
-
   .join-btn {
     display: inline-block;
     background: #29a9eb;
     color: #fff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 16px);
     text-decoration: none;
-    padding: 14px 34px;
+    padding: clamp(12px, 3.5vw, 14px) clamp(24px, 8vw, 34px);
     border-radius: 30px;
     letter-spacing: 0.5px;
     box-shadow: 0 4px 15px rgba(41, 169, 235, 0.5);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-width: 100%;
   }
-
   .join-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(41, 169, 235, 0.7);
   }
-
   .quote {
     margin-top: 24px;
-    font-size: 14px;
+    font-size: clamp(12px, 3.3vw, 14px);
     color: #ffd54f;
     font-style: italic;
   }
-
   .ad-note {
     margin-top: 18px;
-    font-size: 12px;
+    font-size: clamp(10.5px, 3vw, 12px);
+    color: #90a4ae;
+  }
+  .ad-note a {
     color: #90a4ae;
   }
 
-  .ad-note a {
-    color: #90a4ae;
+  /* Extra safety net for very small/old phones (< 360px) */
+  @media (max-width: 360px) {
+    .card {
+      border-radius: 14px;
+    }
+    .features {
+      max-width: 100%;
+    }
+  }
+
+  /* Landscape phones with limited height */
+  @media (max-height: 480px) and (orientation: landscape) {
+    body {
+      align-items: flex-start;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .card img.avatar {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    .features p {
+      margin: 6px 0;
+    }
   }
 </style>
 </head>
 <body>
-
   <div class="card">
     <img class="avatar" src="https://i.ibb.co/jkGbnL4B/IMG-20260417-230748-323.jpg" alt="munaaf">
     <h1>munaaf</h1>
-
     <div class="features">
       <p>🌐 Learning &amp; Educational Sessions</p>
       <p>📊 Market Concepts &amp; Awareness</p>
       <p>💎 Chart Reading Concepts</p>
       <p>💻 Educational Case Discussions</p>
     </div>
-
     <p class="tagline">Join our learning community and grow your knowledge</p>
-
     <a class="join-btn" href="https://t.me/+dJ7mL9r0X4U4ZDNl" target="_blank" rel="noopener" onclick="fbq('track', 'Subscribe');">JOIN TELEGRAM</a>
-
     <p class="quote">नियत अच्छी और मेहनत सच्ची हो, तो कामयाबी जरूर मिलती है।</p>
-
     <p class="ad-note">This Channel Advertise By <a href="https://telegram.me/+3XoqJNLxYHswNTc1" target="_blank" rel="noopener">AD BUILD AGENCY</a></p>
   </div>
-
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -144,6 +160,5 @@
   src="https://www.facebook.com/tr?id=2033533073941607&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
-
 </body>
 </html>
